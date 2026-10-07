@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
 export function EducationTimeline() {
-  const { t, locale } = useLanguage();
+  const { t } = useLanguage();
 
   return (
     <Container className="py-16 sm:py-20">
@@ -20,7 +20,7 @@ export function EducationTimeline() {
           const isPrimary = item.level === "primary";
           return (
             <div
-              key={item.institution + item.degree.en}
+              key={item.institution + item.degree}
               className={cn(
                 "flex flex-col gap-3 rounded-2xl border p-6 sm:flex-row sm:items-start",
                 isPrimary
@@ -46,7 +46,7 @@ export function EducationTimeline() {
                       isPrimary ? "text-lg" : "text-base"
                     )}
                   >
-                    {item.degree[locale]}
+                    {item.degree}
                   </h3>
                   <Badge>{isPrimary ? t.education.primaryLabel : t.education.supportingLabel}</Badge>
                 </div>

@@ -8,7 +8,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { LinkButton } from "@/components/ui/button";
 
 export function AboutContent() {
-  const { t, locale } = useLanguage();
+  const { t } = useLanguage();
   const primary = education.find((e) => e.level === "primary");
 
   return (
@@ -16,18 +16,18 @@ export function AboutContent() {
       <SectionHeading eyebrow={t.about.eyebrow} title={t.about.title} />
 
       <div className="mt-8 flex max-w-2xl flex-col gap-5 text-[15px] leading-relaxed text-[var(--muted)]">
-        <p>{aboutContent.intro[locale]}</p>
-        <p>{aboutContent.focus[locale]}</p>
-        <p>{aboutContent.path[locale]}</p>
-        <p>{aboutContent.now[locale]}</p>
-        <p>{aboutContent.interests[locale]}</p>
+        <p>{aboutContent.intro}</p>
+        <p>{aboutContent.focus}</p>
+        <p>{aboutContent.path}</p>
+        <p>{aboutContent.now}</p>
+        <p>{aboutContent.interests}</p>
       </div>
 
       {primary && (
         <div className="mt-10 flex flex-col gap-4 rounded-2xl border border-[var(--border)] bg-[var(--card)] card-elevated p-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="text-sm font-semibold text-[var(--foreground)]">
-              {primary.degree[locale]}
+              {primary.degree}
             </p>
             <p className="text-sm text-[var(--muted)]">
               {primary.institution} &middot; {primary.duration}

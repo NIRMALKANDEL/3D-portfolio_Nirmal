@@ -42,6 +42,10 @@ export type Translations = {
     backendRepo: string;
     caseStudy: string;
     inProgress: string;
+    live: string;
+    completed: string;
+    builtWithClaude: string;
+    moreTech: string;
     keyFeatures: string;
     technologies: string;
     overview: string;

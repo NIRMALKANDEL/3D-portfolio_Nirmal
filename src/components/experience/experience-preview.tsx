@@ -7,7 +7,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { LinkButton } from "@/components/ui/button";
 
 export function ExperiencePreview() {
-  const { t, locale } = useLanguage();
+  const { t } = useLanguage();
   const items = experience.filter((e) => e.featuredOnHome);
 
   return (
@@ -32,7 +32,7 @@ export function ExperiencePreview() {
               </div>
               <p className="text-sm font-medium text-[var(--accent)]">{item.company}</p>
               <ul className="flex flex-col gap-1.5 text-sm text-[var(--muted)]">
-                {item.bulletList[locale].slice(0, 2).map((bullet) => (
+                {item.bulletList.slice(0, 2).map((bullet) => (
                   <li key={bullet} className="flex gap-2">
                     <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[var(--muted)]" />
                     {bullet}

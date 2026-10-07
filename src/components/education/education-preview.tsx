@@ -8,7 +8,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { LinkButton } from "@/components/ui/button";
 
 export function EducationPreview() {
-  const { t, locale } = useLanguage();
+  const { t } = useLanguage();
   const primary = education.find((e) => e.level === "primary");
   if (!primary) return null;
 
@@ -24,7 +24,7 @@ export function EducationPreview() {
             </span>
             <div className="flex flex-col gap-1">
               <h3 className="text-base font-semibold text-[var(--foreground)]">
-                {primary.degree[locale]}
+                {primary.degree}
               </h3>
               <p className="text-sm text-[var(--muted)]">{primary.institution}</p>
               <p className="text-xs text-[var(--muted)]">

@@ -7,7 +7,6 @@ import { site } from "@/data/site";
 import { useLanguage } from "@/context/language-context";
 import { Container } from "@/components/ui/container";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
-import { LanguageSwitcher } from "@/components/i18n/language-switcher";
 import { ModeSwitch } from "@/components/mode/mode-switch";
 
 export function Navbar() {
@@ -48,7 +47,6 @@ export function Navbar() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <ModeSwitch />
-          <LanguageSwitcher />
           <ThemeToggle />
         </div>
 
@@ -85,7 +83,6 @@ export function Navbar() {
           </nav>
           <div className="flex flex-wrap items-center gap-3 border-t border-[var(--border)] pt-4">
             <ModeSwitch />
-            <LanguageSwitcher />
             <ThemeToggle />
           </div>
         </Container>

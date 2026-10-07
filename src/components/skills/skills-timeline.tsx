@@ -6,7 +6,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Badge } from "@/components/ui/badge";
 
 export function SkillsTimeline() {
-  const { t, locale } = useLanguage();
+  const { t } = useLanguage();
 
   return (
     <div className="mt-16">
@@ -29,11 +29,11 @@ export function SkillsTimeline() {
             <div className="flex flex-col gap-2 rounded-2xl border border-[var(--border)] bg-[var(--card)] card-elevated p-6">
               <div className="flex flex-wrap items-baseline justify-between gap-2">
                 <h3 className="text-base font-semibold text-[var(--foreground)]">
-                  {entry.title[locale]}
+                  {entry.title}
                 </h3>
                 <span className="text-xs text-[var(--muted)]">{entry.period}</span>
               </div>
-              <p className="text-sm text-[var(--muted)]">{entry.description[locale]}</p>
+              <p className="text-sm text-[var(--muted)]">{entry.description}</p>
               <div className="mt-2 flex flex-wrap gap-2">
                 {entry.skills.map((skill) => (
                   <Badge key={skill}>{skill}</Badge>

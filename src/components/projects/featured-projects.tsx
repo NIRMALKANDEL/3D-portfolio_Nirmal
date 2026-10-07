@@ -10,8 +10,7 @@ import { ProjectCard } from "@/components/projects/project-card";
 export function FeaturedProjects() {
   const { t } = useLanguage();
   const featured = getFeaturedProjects();
-  const bigCards = featured.slice(0, 3);
-  const smallCards = featured.slice(3);
+  const [lead, ...rest] = featured;
 
   return (
     <section id="projects" className="py-16 sm:py-20">
@@ -24,12 +23,10 @@ export function FeaturedProjects() {
         </div>
 
         <div className="mt-10 flex flex-col gap-6">
-          {bigCards.map((project) => (
-            <ProjectCard key={project.slug} project={project} featured />
-          ))}
-          {smallCards.length > 0 && (
-            <div className="grid gap-6 sm:grid-cols-2">
-              {smallCards.map((project) => (
+          {lead && <ProjectCard project={lead} featured />}
+          {rest.length > 0 && (
+            <div className="grid gap-6 lg:grid-cols-3">
+              {rest.map((project) => (
                 <ProjectCard key={project.slug} project={project} />
               ))}
             </div>

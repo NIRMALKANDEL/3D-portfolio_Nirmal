@@ -20,10 +20,10 @@ export async function generateMetadata({
 
   return {
     title: project.title,
-    description: project.tagline.en,
+    description: project.tagline,
     openGraph: {
       title: project.title,
-      description: project.tagline.en,
+      description: project.tagline,
       images: [project.image],
     },
   };

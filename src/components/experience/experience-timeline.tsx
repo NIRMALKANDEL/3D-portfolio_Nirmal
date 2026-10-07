@@ -8,7 +8,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Badge } from "@/components/ui/badge";
 
 export function ExperienceTimeline() {
-  const { t, locale } = useLanguage();
+  const { t } = useLanguage();
 
   return (
     <Container className="py-16 sm:py-20">
@@ -33,7 +33,7 @@ export function ExperienceTimeline() {
                 {!item.isEngineering && <Badge>{t.experience.nonEngineering}</Badge>}
               </div>
               <ul className="mt-1 flex flex-col gap-1.5 text-sm text-[var(--muted)]">
-                {item.bulletList[locale].map((bullet) => (
+                {item.bulletList.map((bullet) => (
                   <li key={bullet} className="flex gap-2">
                     <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[var(--muted)]" />
                     {bullet}

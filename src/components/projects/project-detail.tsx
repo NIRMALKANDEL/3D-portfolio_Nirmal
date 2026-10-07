@@ -8,9 +8,10 @@ import { Container } from "@/components/ui/container";
 import { Badge } from "@/components/ui/badge";
 import { LinkButton } from "@/components/ui/button";
 import { GithubIcon } from "@/components/ui/brand-icons";
+import { ProjectMeta } from "@/components/projects/project-card";
 
 export function ProjectDetail({ project }: { project: Project }) {
-  const { locale, t } = useLanguage();
+  const { t } = useLanguage();
 
   return (
     <Container className="py-16 sm:py-20">
@@ -28,18 +29,14 @@ export function ProjectDetail({ project }: { project: Project }) {
           className="object-cover"
           priority
         />
-        {project.status === "in-progress" && (
-          <span className="absolute right-4 top-4 rounded-full bg-black/70 px-3 py-1 text-xs font-medium text-white">
-            {t.projects.inProgress}
-          </span>
-        )}
       </div>
 
       <div className="mt-8 flex flex-col gap-4">
+        <ProjectMeta project={project} />
         <h1 className="text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl">
           {project.title}
         </h1>
-        <p className="max-w-2xl text-[15px] text-[var(--muted)]">{project.tagline[locale]}</p>
+        <p className="max-w-2xl text-[15px] text-[var(--muted)]">{project.tagline}</p>
 
         <div className="flex flex-wrap gap-3 pt-2">
           {project.links.live && (
@@ -76,10 +73,10 @@ export function ProjectDetail({ project }: { project: Project }) {
               {t.projects.overview}
             </h2>
             <p className="mt-3 text-[15px] leading-relaxed text-[var(--muted)]">
-              {project.description[locale]}
+              {project.description}
             </p>
             <p className="mt-3 text-[15px] leading-relaxed text-[var(--muted)]">
-              {project.problem[locale]}
+              {project.problem}
             </p>
           </section>
 
@@ -88,7 +85,7 @@ export function ProjectDetail({ project }: { project: Project }) {
               {t.projects.keyFeatures}
             </h2>
             <ul className="mt-3 flex flex-col gap-2.5">
-              {project.features[locale].map((feature) => (
+              {project.features.map((feature) => (
                 <li key={feature} className="flex gap-2.5 text-[15px] text-[var(--muted)]">
                   <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
                   {feature}
@@ -102,7 +99,7 @@ export function ProjectDetail({ project }: { project: Project }) {
               Technical Implementation
             </h2>
             <ul className="mt-3 flex flex-col gap-2.5">
-              {project.implementation[locale].map((line) => (
+              {project.implementation.map((line) => (
                 <li key={line} className="flex gap-2.5 text-[15px] text-[var(--muted)]">
                   <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--muted)]" />
                   {line}

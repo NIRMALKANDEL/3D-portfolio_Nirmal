@@ -59,10 +59,6 @@ const themeInitScript = `
     var stored = window.localStorage.getItem('nk-theme');
     var theme = stored === 'light' ? 'light' : 'dark';
     document.documentElement.classList.toggle('dark', theme === 'dark');
-    var locale = window.localStorage.getItem('nk-locale');
-    if (locale === 'en' || locale === 'hi') {
-      document.documentElement.lang = locale;
-    }
   } catch (e) {}
 })();
 `;

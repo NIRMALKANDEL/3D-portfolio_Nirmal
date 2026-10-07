@@ -7,7 +7,7 @@ import { Container } from "@/components/ui/container";
 import { Badge } from "@/components/ui/badge";
 
 export function NonTechContent() {
-  const { t, locale } = useLanguage();
+  const { t } = useLanguage();
 
   return (
     <Container className="py-16 sm:py-20">
@@ -25,19 +25,19 @@ export function NonTechContent() {
       <div className="mt-10 grid gap-6 sm:grid-cols-2">
         {nonTechExperience.map((entry) => (
           <div
-            key={entry.title.en}
+            key={entry.title}
             className="flex flex-col gap-3 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6"
           >
             <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--accent)_15%,transparent)] text-[var(--accent)]">
               <Gamepad2 size={18} />
             </span>
             <h2 className="text-base font-semibold text-[var(--foreground)]">
-              {entry.title[locale]}
+              {entry.title}
             </h2>
-            <span className="text-xs font-medium text-[var(--muted)]">{entry.context[locale]}</span>
-            <p className="text-sm leading-relaxed text-[var(--muted)]">{entry.description[locale]}</p>
+            <span className="text-xs font-medium text-[var(--muted)]">{entry.context}</span>
+            <p className="text-sm leading-relaxed text-[var(--muted)]">{entry.description}</p>
             <div className="mt-1 flex flex-wrap gap-2">
-              {entry.highlights[locale].map((h) => (
+              {entry.highlights.map((h) => (
                 <Badge key={h}>{h}</Badge>
               ))}
             </div>
