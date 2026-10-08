@@ -3,44 +3,51 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #f7f4ee;
-  --surface: #efe9dd;
+  --background: #fbfbfa;
+  --surface: #f4f3f0;
   --card: #ffffff;
-  --foreground: #17170f;
-  --muted: #6b6a5b;
-  --border: #e3ddcd;
+  --foreground: #111111;
+  --muted: #64635f;
+  --border: #eaeaea;
   --accent: #c2410c;
   --accent-2: #0f766e;
   --accent-foreground: #ffffff;
   --ring: #c2410c;
-  --shadow-card: 0 1px 1px rgba(30, 25, 15, 0.04), 0 16px 32px -18px rgba(30, 25, 15, 0.22);
-  --shadow-card-hover: 0 2px 2px rgba(30, 25, 15, 0.05), 0 22px 40px -16px rgba(30, 25, 15, 0.28);
+  --glass: rgb(251 251 250 / 0.86);
+  --glass-border: rgb(0 0 0 / 0.07);
+  --shadow-card: 0 1px 2px rgba(17, 17, 17, 0.03);
+  --shadow-card-hover: 0 1px 2px rgba(17, 17, 17, 0.03), 0 8px 24px -12px rgba(17, 17, 17, 0.08);
+  --grain-opacity: 0.025;
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
   --body-bg-image: radial-gradient(
-      55% 45% at 12% -5%,
-      color-mix(in srgb, var(--accent) 16%, transparent),
-      transparent 65%
-    ),
-    radial-gradient(
-      45% 40% at 100% 15%,
-      color-mix(in srgb, var(--accent-2) 14%, transparent),
-      transparent 65%
-    );
+    45% 35% at 85% 0%,
+    color-mix(in srgb, var(--accent) 5%, transparent),
+    transparent 70%
+  );
 }
 
 .dark {
+  color-scheme: dark;
   --background: #0c0d0b;
-  --surface: #131410;
-  --card: #171813;
+  --surface: #121310;
+  --card: #161713;
   --foreground: #f2f2ee;
-  --muted: #9a9c92;
+  --muted: #a3a59b;
   --border: #26271f;
   --accent: #e08a63;
   --accent-2: #4fb8ab;
   --accent-foreground: #12130f;
   --ring: #e08a63;
-  --shadow-card: none;
-  --shadow-card-hover: none;
-  --body-bg-image: none;
+  --glass: rgb(16 17 14 / 0.86);
+  --glass-border: rgb(255 255 255 / 0.08);
+  --shadow-card: inset 0 1px 0 rgb(255 255 255 / 0.04);
+  --shadow-card-hover: inset 0 1px 0 rgb(255 255 255 / 0.06), 0 30px 60px -30px rgba(224, 138, 99, 0.25);
+  --grain-opacity: 0.06;
+  --body-bg-image: radial-gradient(
+    50% 40% at 85% -5%,
+    color-mix(in srgb, var(--accent) 9%, transparent),
+    transparent 70%
+  );
 }
 
 @theme inline {
@@ -54,15 +61,16 @@
   --color-accent-2: var(--accent-2);
   --color-accent-foreground: var(--accent-foreground);
   --color-ring: var(--ring);
-  --font-sans: var(--font-inter);
-  --animate-fade-up: fade-up 0.6s ease-out both;
+  --font-sans: var(--font-geist);
+  --font-mono: var(--font-geist-mono);
+  --animate-fade-up: fade-up 0.8s var(--ease-spring) both;
   --animate-fade-in: fade-in 0.6s ease-out both;
 }
 
 @keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -84,24 +92,111 @@ html {
 }
 
 body {
+  overflow-x: clip;
   background-color: var(--background);
   background-image: var(--body-bg-image);
   background-attachment: fixed;
   color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+@layer base {
+  body {
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "kern", "liga", "calt";
+  }
+
+  h1,
+  h2 {
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+  }
+
+  h3 {
+    letter-spacing: -0.015em;
+  }
+}
+
+.font-mono,
+time {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Film grain: fixed + pointer-events-none so it never repaints on scroll. */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
 }
 
 .card-elevated {
   box-shadow: var(--shadow-card);
-  transition: box-shadow 0.25s ease;
+  transition: box-shadow 0.4s var(--ease-spring);
 }
 
-.card-elevated:hover {
+.card-elevated.hoverable:hover {
   box-shadow: var(--shadow-card-hover);
 }
 
+/* Cursor-following highlight. --mx / --my are written by TiltCard. */
+.spotlight {
+  position: relative;
+}
+
+.spotlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-spring);
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--accent) 14%, transparent),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+.spotlight:hover::after {
+  opacity: 1;
+}
+
+.glass {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06), 0 12px 40px -20px rgb(0 0 0 / 0.35);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass {
+    background: var(--background);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
 section[id] {
-  scroll-margin-top: 96px;
+  scroll-margin-top: 112px;
 }
 
 ::selection {

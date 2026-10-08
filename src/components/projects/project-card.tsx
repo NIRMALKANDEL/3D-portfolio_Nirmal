@@ -5,9 +5,8 @@ import Link from "next/link";
 import { ArrowUpRight, ExternalLink, Sparkles } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { useLanguage } from "@/context/language-context";
-import { LinkButton } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { GithubIcon } from "@/components/ui/brand-icons";
+import { TiltCard } from "@/components/ui/tilt-card";
 import { cn } from "@/lib/utils";
 
 export function ProjectMeta({ project }: { project: Project }) {
@@ -20,20 +19,10 @@ export function ProjectMeta({ project }: { project: Project }) {
 
   return (
     <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-medium">
-      <span className="uppercase tracking-[0.16em] text-[var(--accent)]">{project.category}</span>
-      <span className="inline-flex items-center gap-1.5 text-[var(--muted)]">
-        <span
-          className={cn(
-            "h-1.5 w-1.5 rounded-full",
-            project.status === "live" && "bg-[var(--accent-2)]",
-            project.status === "completed" && "bg-[var(--muted)]",
-            project.status === "in-progress" && "bg-[var(--accent)]"
-          )}
-        />
-        {statusLabel}
-      </span>
+      <span className="font-mono uppercase tracking-[0.14em] text-[var(--accent)]">{project.category}</span>
+      <span className="text-[var(--muted)]">{statusLabel}</span>
       {project.builtWithClaude && (
-        <span className="inline-flex items-center gap-1 rounded-full border border-accent/30 bg-accent/10 px-2.5 py-0.5 text-[var(--accent)]">
+        <span className="inline-flex items-center gap-1 rounded-full bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] px-2.5 py-0.5 text-[var(--accent)]">
           <Sparkles size={12} />
           {t.projects.builtWithClaude}
         </span>
@@ -42,124 +31,92 @@ export function ProjectMeta({ project }: { project: Project }) {
   );
 }
 
+const linkChip =
+  "relative z-10 inline-flex h-8 items-center gap-1.5 rounded-full border border-[var(--border)] px-3 text-xs font-medium text-[var(--foreground)] transition-colors duration-300 hover:border-[var(--accent)] hover:text-[var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]";
+
+/** Compact card: image, title, short description, Live / Frontend / Backend links. */
 export function ProjectCard({
   project,
-  featured = false,
+  layout = "stack",
 }: {
   project: Project;
-  featured?: boolean;
+  /** "row" puts a small image beside the text for a shorter card. */
+  layout?: "stack" | "row";
 }) {
   const { t } = useLanguage();
-  const techLimit = featured ? 8 : 4;
-  const extraTech = project.technologies.length - techLimit;
+  const { live, github, githubFrontend, githubBackend } = project.links;
+  const href = `/projects/${project.slug}`;
+  const row = layout === "row";
 
   return (
-    <article
-      className={cn(
-        "group flex flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--card)] card-elevated transition-[border-color,transform] duration-300 hover:-translate-y-0.5 hover:border-[var(--accent)]",
-        featured && "lg:flex-row"
-      )}
-    >
-      <div
+    <TiltCard max={row ? 3 : 4}>
+      <article
         className={cn(
-          "w-full border-b border-[var(--border)]",
-          featured && "lg:flex lg:w-1/2 lg:shrink-0 lg:items-center lg:border-b-0 lg:bg-[var(--surface)] lg:p-6"
+          "group relative flex h-full overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--card)] card-elevated hoverable",
+          row ? "flex-col sm:flex-row" : "flex-col"
         )}
       >
-        <Link
-          href={`/projects/${project.slug}`}
-          tabIndex={-1}
-          aria-hidden
+        <div
           className={cn(
-            "relative block aspect-video w-full overflow-hidden",
-            featured && "lg:rounded-xl lg:border lg:border-[var(--border)]"
+            "relative shrink-0 overflow-hidden bg-[var(--surface)]",
+            row
+              ? "aspect-[16/9] border-b border-[var(--border)] sm:aspect-auto sm:w-[38%] sm:border-b-0 sm:border-r"
+              : "aspect-[16/9] border-b border-[var(--border)]"
           )}
         >
           <Image
             src={project.image}
-            alt=""
+            alt={`${project.title} preview`}
             fill
-            sizes={featured ? "(min-width: 1024px) 50vw, 100vw" : "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"}
-            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-            priority={featured}
+            sizes={row ? "(min-width: 1024px) 20vw, (min-width: 640px) 38vw, 100vw" : "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"}
+            className={cn("object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]", row && "sm:object-left")}
           />
-        </Link>
-      </div>
+        </div>
 
-      <div className={cn("flex flex-1 flex-col gap-4 p-6", featured && "lg:p-8")}>
-        <ProjectMeta project={project} />
-
-        <div className="flex flex-col gap-2">
-          <h3
-            className={cn(
-              "font-semibold tracking-tight text-[var(--foreground)]",
-              featured ? "text-xl sm:text-2xl" : "text-lg sm:text-xl"
-            )}
-          >
-            <Link
-              href={`/projects/${project.slug}`}
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-[var(--accent)]"
-            >
+        <div className="flex min-w-0 flex-1 flex-col gap-2.5 p-5">
+          <ProjectMeta project={project} />
+          <h3 className="text-lg font-semibold text-[var(--foreground)]">
+            {/* The whole card is clickable through this stretched link. */}
+            <Link href={href} className="after:absolute after:inset-0 focus-visible:outline-none">
               {project.title}
-              <ArrowUpRight
-                size={18}
-                className="opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-              />
             </Link>
           </h3>
-          <p className="text-sm font-medium text-foreground/80">{project.tagline}</p>
-        </div>
+          <p className="line-clamp-2 text-sm leading-relaxed text-[var(--muted)]">{project.tagline}</p>
 
-        <p
-          className={cn(
-            "text-sm leading-relaxed text-[var(--muted)]",
-            !featured && "line-clamp-4"
-          )}
-        >
-          {project.description}
-        </p>
-
-        <div className="flex flex-wrap gap-2">
-          {project.technologies.slice(0, techLimit).map((tech) => (
-            <Badge key={tech}>{tech}</Badge>
-          ))}
-          {extraTech > 0 && (
-            <Badge className="border-dashed">
-              +{extraTech} {t.projects.moreTech}
-            </Badge>
-          )}
+          <div className="mt-auto flex flex-wrap items-center gap-2 pt-3">
+            {live && (
+              <a href={live} target="_blank" rel="noopener noreferrer" className={linkChip}>
+                <ExternalLink size={12} />
+                {t.projects.liveDemo}
+              </a>
+            )}
+            {githubFrontend && (
+              <a href={githubFrontend} target="_blank" rel="noopener noreferrer" className={linkChip}>
+                <GithubIcon size={12} />
+                Frontend
+              </a>
+            )}
+            {githubBackend && (
+              <a href={githubBackend} target="_blank" rel="noopener noreferrer" className={linkChip}>
+                <GithubIcon size={12} />
+                Backend
+              </a>
+            )}
+            {github && (
+              <a href={github} target="_blank" rel="noopener noreferrer" className={linkChip}>
+                <GithubIcon size={12} />
+                Code
+              </a>
+            )}
+            <span
+              aria-hidden
+              className="ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-[var(--surface)] text-[var(--foreground)] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--accent)]"
+            >
+              <ArrowUpRight size={14} />
+            </span>
+          </div>
         </div>
-
-        <div className="mt-auto flex flex-wrap gap-3 border-t border-[var(--border)] pt-5">
-          {project.links.live && (
-            <LinkButton href={project.links.live} size="sm">
-              <ExternalLink size={14} />
-              {t.projects.liveDemo}
-            </LinkButton>
-          )}
-          {project.links.github && (
-            <LinkButton href={project.links.github} variant="secondary" size="sm">
-              <GithubIcon size={14} />
-              {t.projects.githubLabel}
-            </LinkButton>
-          )}
-          {project.links.githubFrontend && (
-            <LinkButton href={project.links.githubFrontend} variant="secondary" size="sm">
-              <GithubIcon size={14} />
-              {t.projects.frontendRepo}
-            </LinkButton>
-          )}
-          {project.links.githubBackend && (
-            <LinkButton href={project.links.githubBackend} variant="secondary" size="sm">
-              <GithubIcon size={14} />
-              {t.projects.backendRepo}
-            </LinkButton>
-          )}
-          <LinkButton href={`/projects/${project.slug}`} variant="ghost" size="sm">
-            {t.projects.caseStudy}
-          </LinkButton>
-        </div>
-      </div>
-    </article>
+      </article>
+    </TiltCard>
   );
 }

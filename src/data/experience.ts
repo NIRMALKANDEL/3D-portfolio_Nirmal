@@ -14,7 +14,7 @@ export const experience: Experience[] = [
   {
     role: "Recruiter",
     company: "LanceSoft Inc.",
-    duration: "Dec 2025 – Apr 2026",
+    duration: "Dec 2025 - Apr 2026",
     bullets: "",
     bulletList: [
       "Managed end-to-end recruitment for US healthcare professionals.",
@@ -26,7 +26,7 @@ export const experience: Experience[] = [
   {
     role: "Associate Software Engineer",
     company: "GammaEdge Technologies",
-    duration: "Mar 2025 – Oct 2025",
+    duration: "Mar 2025 - Oct 2025",
     bullets: "",
     bulletList: [
       "Developed production-ready, responsive UIs using React, TypeScript, and Material UI.",
@@ -40,7 +40,7 @@ export const experience: Experience[] = [
   {
     role: "MERN Stack Intern (Full-time)",
     company: "Startappss System",
-    duration: "Sept 2024 – Jan 2025",
+    duration: "Sept 2024 - Jan 2025",
     bullets: "",
     bulletList: [
       "Designed and implemented REST API integration between frontend and backend services.",

@@ -14,9 +14,9 @@ export const en: Translations = {
   },
   hero: {
     eyebrow: "Full Stack / MERN Stack Developer",
-    tagline: "I build responsive, production-focused web apps.",
+    tagline: "I build responsive, production-focused web apps with React, TypeScript and the MERN stack.",
     description:
-      "Frontend-focused developer working across React, TypeScript and the MERN stack — from UI to REST APIs, MongoDB and AI integrations. Currently building with Claude Code.",
+      "Frontend-focused developer working across React, TypeScript and the MERN stack, from UI to REST APIs, MongoDB and AI integrations. Currently building with Claude Code.",
     viewProjects: "View Projects",
     github: "GitHub",
     linkedin: "LinkedIn",
@@ -31,7 +31,7 @@ export const en: Translations = {
     tools: "Tools, AI & Workflow",
     timelineEyebrow: "Learning Path",
     timelineTitle: "Skills Timeline",
-    timelineSubtitle: "How my skills grew — from first web pages to full-stack apps, AI integrations and building with Claude Code.",
+    timelineSubtitle: "How my skills grew, from first web pages to full-stack apps, AI integrations and building with Claude Code.",
   },
   projects: {
     eyebrow: "Selected Work",
@@ -75,7 +75,7 @@ export const en: Translations = {
     title: "Beyond Code",
     subtitle: "Events, operations & community experience",
     description:
-      "Outside of writing code, I've helped run gaming and brand events end-to-end — coordination, sponsorships, and on-ground execution.",
+      "Outside of writing code, I've helped run gaming and brand events end-to-end, coordination, sponsorships, and on-ground execution.",
     viewMore: "See Beyond Code",
   },
   contact: {
@@ -87,7 +87,7 @@ export const en: Translations = {
     message: "Message",
     send: "Send Message",
     sending: "Sending...",
-    success: "Thanks — your message has been sent. I'll get back to you soon.",
+    success: "Thanks, your message has been sent. I'll get back to you soon.",
     error: "Something went wrong. Please try again or email me directly.",
     directly: "Or reach out directly",
   },

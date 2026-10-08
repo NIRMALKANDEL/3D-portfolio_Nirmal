@@ -30,8 +30,8 @@ export const projects: Project[] = [
     slug: "paylog",
     title: "Paylog",
     tagline: "A personal finance tracker for Android, iPhone and the web, with a home-screen quick-note widget",
-    description: "A personal finance tracker with a Flask + SQLite backend that serves both the website and a JSON API (/api/v1), and a native Android + iOS app built with React Native and Expo. Users log expenses and income, set budgets and savings goals, schedule recurring transactions, scan payment receipts, and add entries in plain text like \"250 lunch\" — including straight from a home-screen widget without opening the app. Built using Claude AI.",
-    problem: "Know where your money goes — with logging fast enough to actually keep up. Paylog is the next version of Spendly: a real native mobile app, a home-screen widget, and sign-ins that last 30 days, fixing the old app's habit of logging Android users out.",
+    description: "A personal finance tracker with a Flask + SQLite backend that serves both the website and a JSON API (/api/v1), and a native Android + iOS app built with React Native and Expo. Users log expenses and income, set budgets and savings goals, schedule recurring transactions, scan payment receipts, and add entries in plain text like \"250 lunch\", including straight from a home-screen widget without opening the app. Built using Claude AI.",
+    problem: "Know where your money goes, with logging fast enough to actually keep up. Paylog is the next version of Spendly: a real native mobile app, a home-screen widget, and sign-ins that last 30 days, fixing the old app's habit of logging Android users out.",
     technologies: [
       "Python",
       "Flask",
@@ -53,7 +53,7 @@ export const projects: Project[] = [
       "Budgets (overall + per category), savings goals and recurring transactions",
       "Analytics with charts and plain-language insights",
       "5 calculators: savings growth, goal planner, time to goal, emergency fund and loan EMI",
-      "Quick note: type \"250 lunch\", \"salary 65000\" or \"2k rent yesterday\" — one entry per line, with a live preview",
+      "Quick note: type \"250 lunch\", \"salary 65000\" or \"2k rent yesterday\", one entry per line, with a live preview",
       "Android home-screen widget: a note card that saves entries without opening the app, with Undo and offline queueing",
       "Receipt scanning for GPay / PhonePe / Paytm / BHIM screenshots and bills, read on the phone",
       "Light / dark / system mode, 6 colour themes and 7 currencies (₹ with Indian grouping)",
@@ -79,8 +79,8 @@ export const projects: Project[] = [
     slug: "devtinder",
     title: "DevTinder",
     tagline: "A Tinder-style networking app for developers",
-    description: "A full-stack developer-networking application — think Tinder, but for developers to discover and connect with each other. The frontend (devTinder-web) is a React + Redux Toolkit SPA; the backend (devTinder) is a Node.js/Express REST API with MongoDB, JWT authentication, and a connection-request system.",
-    problem: "Build a complete two-sided MERN application — secure auth, a feed with actionable cards, and a request/connection workflow — split cleanly across separate frontend and backend repositories.",
+    description: "A full-stack developer-networking application, think Tinder, but for developers to discover and connect with each other. The frontend (devTinder-web) is a React + Redux Toolkit SPA; the backend (devTinder) is a Node.js/Express REST API with MongoDB, JWT authentication, and a connection-request system.",
+    problem: "Build a complete two-sided MERN application, secure auth, a feed with actionable cards, and a request/connection workflow, split cleanly across separate frontend and backend repositories.",
     technologies: [
       "React 19",
       "Redux Toolkit",
@@ -122,8 +122,8 @@ export const projects: Project[] = [
     slug: "nibblr",
     title: "Nibblr",
     tagline: "A food-delivery app covering the full ordering flow",
-    description: "A food-delivery web app built with React 18, Redux Toolkit and Tailwind CSS. Users discover restaurants with search, filters and sorting, browse menus, manage a persistent cart, check out with an interactive delivery-address map and coupon codes, and view their order history — backed by live restaurant data with an offline-friendly sample-data fallback.",
-    problem: "Build a complete, resilient ordering experience on the frontend alone — real third-party data that can fail at any time, a cart and orders that survive reloads, and a checkout that feels real without a backend.",
+    description: "A food-delivery web app built with React 18, Redux Toolkit and Tailwind CSS. Users discover restaurants with search, filters and sorting, browse menus, manage a persistent cart, check out with an interactive delivery-address map and coupon codes, and view their order history, backed by live restaurant data with an offline-friendly sample-data fallback.",
+    problem: "Build a complete, resilient ordering experience on the frontend alone, real third-party data that can fail at any time, a cart and orders that survive reloads, and a checkout that feels real without a backend.",
     technologies: [
       "React 18",
       "Redux Toolkit",
@@ -146,9 +146,9 @@ export const projects: Project[] = [
     ],
     implementation: [
       "Redux Toolkit slices manage cart, favorites, orders and location; state is persisted to localStorage with every read/write wrapped in try/catch.",
-      "Utils/api.js fetches live restaurant data directly, falls back through CORS proxies, and finally to bundled sample data with a visible banner — so the UI never gets stuck.",
+      "Utils/api.js fetches live restaurant data directly, falls back through CORS proxies, and finally to bundled sample data with a visible banner, so the UI never gets stuck.",
       "Menu parsing handles both flat and nested category response shapes.",
-      "Card details in the mock payment flow are format-validated (Luhn check, expiry, CVV) and then discarded — never stored or sent anywhere.",
+      "Card details in the mock payment flow are format-validated (Luhn check, expiry, CVV) and then discarded, never stored or sent anywhere.",
       "Unit tests with Jest + React Testing Library; deployed on Vercel as a static SPA.",
     ],
     links: {
@@ -165,7 +165,7 @@ export const projects: Project[] = [
     title: "Netflix GPT",
     tagline: "A Netflix-style streaming UI with GPT-powered movie search",
     description: "A Netflix-inspired movie browsing app built with React and Firebase. Users sign in with Firebase Authentication, browse Now Playing / Popular / Top Rated / Upcoming titles pulled from the TMDB API, watch trailers, and use an AI-powered search bar (built on Google's Gemini API) to get movie recommendations from natural-language queries.",
-    problem: "Recreate a production-grade streaming UI end-to-end — auth, live movie data, and an AI layer on top — rather than a static clone.",
+    problem: "Recreate a production-grade streaming UI end-to-end, auth, live movie data, and an AI layer on top, rather than a static clone.",
     technologies: [
       "React 19",
       "Redux Toolkit",
@@ -204,7 +204,7 @@ export const projects: Project[] = [
     title: "Brightway Solar",
     tagline: "A lead-generation website for a solar company, with a chatbot",
     description: "A client-style MERN website for a (fictional) solar installation company, designed around lead generation. It has 13+ pages, a free-quote form on every key page, a savings calculator, a government-subsidy (PM Surya Ghar) page, and a chatbot that answers from real site data. Every enquiry is saved to MongoDB along with the page it came from.",
-    problem: "Turn a basic template site into something that actually brings a local business customers — clear calls to action, plain-language pricing help, and instant answers for visitors.",
+    problem: "Turn a basic template site into something that actually brings a local business customers, clear calls to action, plain-language pricing help, and instant answers for visitors.",
     technologies: [
       "React 18",
       "Vite",
@@ -221,7 +221,7 @@ export const projects: Project[] = [
       "13+ pages: Home, About, Products (list + detail), Services, Projects, Gallery, Government Schemes, Blog, Testimonials, FAQ, Contact",
       "\"Get Free Quote\" lead form on every key page, saved to MongoDB with its source page",
       "Savings calculator that explains the benefit in plain language",
-      "Keyword-matching chatbot that answers from company info, products and FAQs — with an honest fallback",
+      "Keyword-matching chatbot that answers from company info, products and FAQs, with an honest fallback",
       "WhatsApp button and mobile-first responsive layout",
       "Accessibility basics: semantic HTML, skip link, focus states, labelled forms, ARIA on widgets",
     ],
@@ -244,7 +244,7 @@ export const projects: Project[] = [
     title: "Next.js Video App",
     tagline: "A full-stack Next.js video-sharing app with ImageKit uploads",
     description: "A full-stack video-sharing app built entirely in Next.js with TypeScript. Users register and log in with NextAuth, upload vertical videos to ImageKit, and browse a feed of the latest uploads. User and video data are stored in MongoDB through Mongoose, and routes are protected by middleware.",
-    problem: "Learn full-stack Next.js end-to-end — auth, protected API routes, a database, and secure direct-to-CDN media uploads — in a single TypeScript codebase.",
+    problem: "Learn full-stack Next.js end-to-end, auth, protected API routes, a database, and secure direct-to-CDN media uploads, in a single TypeScript codebase.",
     technologies: [
       "Next.js 16",
       "React 19",
@@ -267,7 +267,7 @@ export const projects: Project[] = [
       "App Router API routes: /api/auth (register + NextAuth), /api/imageKit-auth (upload signatures) and /api/Video (GET feed, POST new video behind getServerSession).",
       "Typed Mongoose models (User, Video) with a shared database connection helper.",
       "next-auth middleware (withAuth) guards every route except login, register and auth endpoints.",
-      "Work in progress — the core flow is built; UI polish and deployment are next.",
+      "Work in progress, the core flow is built; UI polish and deployment are next.",
     ],
     links: {
       github: "https://github.com/NIRMALKANDEL/NEXT-project-imagekit",
@@ -281,7 +281,7 @@ export const projects: Project[] = [
     slug: "mern-todo",
     title: "MERN Todo",
     tagline: "A full-stack CRUD todo application",
-    description: "A classic full-stack todo app used to practice the MERN fundamentals — a React + Vite frontend talking to a Node/Express + MongoDB Atlas backend with full CRUD and toast notifications.",
+    description: "A classic full-stack todo app used to practice the MERN fundamentals, a React + Vite frontend talking to a Node/Express + MongoDB Atlas backend with full CRUD and toast notifications.",
     problem: "Implement a complete CRUD workflow end-to-end and deploy both the client and API independently.",
     technologies: ["React", "Vite", "Node.js", "Express.js", "MongoDB Atlas", "Tailwind CSS"],
     features: [

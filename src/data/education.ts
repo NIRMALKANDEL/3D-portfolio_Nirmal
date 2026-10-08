@@ -14,7 +14,7 @@ export const education: EducationItem[] = [
     degree: "B.Tech, Computer Science Engineering",
     institution: "Sushila Devi Bansal College of Technology (SDBCT), Indore",
     university: "RGPV University",
-    duration: "2020 – 2024",
+    duration: "2020 - 2024",
   },
   {
     level: "secondary",

@@ -2,35 +2,33 @@
 
 import { Gamepad2 } from "lucide-react";
 import { useLanguage } from "@/context/language-context";
-import { Container } from "@/components/ui/container";
 import { LinkButton } from "@/components/ui/button";
 
 export function BeyondCodeTeaser() {
   const { t } = useLanguage();
 
   return (
-    <section className="py-16 sm:py-20">
-      <Container>
-        <div className="flex flex-col items-start gap-5 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-8 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-start gap-4">
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--accent)_15%,transparent)] text-[var(--accent)]">
-              <Gamepad2 size={20} />
-            </span>
-            <div className="flex flex-col gap-1">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">
-                {t.beyondCode.eyebrow}
-              </span>
-              <h3 className="text-base font-semibold text-[var(--foreground)]">
-                {t.beyondCode.title} — {t.beyondCode.subtitle}
-              </h3>
-              <p className="max-w-xl text-sm text-[var(--muted)]">{t.beyondCode.description}</p>
-            </div>
-          </div>
-          <LinkButton href="/non-tech" variant="secondary" size="sm" className="shrink-0">
-            {t.beyondCode.viewMore}
-          </LinkButton>
+      <div className="relative flex h-full flex-col justify-between gap-10 overflow-hidden rounded-2xl bg-[var(--accent)] p-7 text-[var(--accent-foreground)] sm:p-9">
+        <Gamepad2
+          aria-hidden
+          size={220}
+          strokeWidth={1}
+          className="pointer-events-none absolute -bottom-10 -right-10 rotate-[-14deg] opacity-15"
+        />
+        <div className="relative flex flex-col gap-3">
+          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">{t.beyondCode.title}</h2>
+          <p className="text-lg font-medium">{t.beyondCode.subtitle}</p>
+          <p className="max-w-[44ch] text-sm leading-relaxed opacity-85">{t.beyondCode.description}</p>
         </div>
-      </Container>
-    </section>
+        <LinkButton
+          href="/non-tech"
+          size="sm"
+          variant="inverse"
+          className="relative w-fit"
+          arrow
+        >
+          {t.beyondCode.viewMore}
+        </LinkButton>
+      </div>
   );
 }

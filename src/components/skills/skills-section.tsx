@@ -5,39 +5,45 @@ import { useLanguage } from "@/context/language-context";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Badge } from "@/components/ui/badge";
+import { Reveal } from "@/components/ui/reveal";
+import { SkillSphere } from "@/components/skills/skill-sphere";
 import { SkillsTimeline } from "@/components/skills/skills-timeline";
+
+const allSkills = skillGroups.flatMap((group) => group.items);
 
 export function SkillsSection() {
   const { t } = useLanguage();
 
   return (
-    <section id="skills" className="bg-[var(--surface)] py-16 sm:py-20">
+    <section id="skills" className="py-20 sm:py-28">
       <Container>
-        <SectionHeading title={t.skills.title} subtitle={t.skills.subtitle} />
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {skillGroups.map((group, index) => (
-            <div
-              key={group.key}
-              className="overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--card)] card-elevated"
-            >
-              <div
-                className="h-1"
-                style={{
-                  background: index % 2 === 0 ? "var(--accent)" : "var(--accent-2)",
-                }}
-              />
-              <div className="p-6">
-                <h3 className="text-sm font-semibold uppercase tracking-wide text-[var(--foreground)]">
-                  {t.skills[group.key]}
-                </h3>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {group.items.map((item) => (
-                    <Badge key={item}>{item}</Badge>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
+          <Reveal className="order-2 lg:order-1">
+            <SkillSphere skills={allSkills} />
+            <p className="mt-2 text-center text-xs text-[var(--muted)]">
+              Drag the globe to spin it.
+            </p>
+          </Reveal>
+
+          <div className="order-1 flex flex-col gap-10 lg:order-2">
+            <Reveal>
+              <SectionHeading title={t.skills.title} subtitle={t.skills.subtitle} />
+            </Reveal>
+            <dl className="grid gap-8 sm:grid-cols-2">
+              {skillGroups.map((group, index) => (
+                <Reveal key={group.key} delay={index * 0.06}>
+                  <dt className="border-t border-[var(--border)] pt-4 text-sm font-semibold text-[var(--foreground)]">
+                    {t.skills[group.key]}
+                  </dt>
+                  <dd className="mt-3 flex flex-wrap gap-2">
+                    {group.items.map((item) => (
+                      <Badge key={item}>{item}</Badge>
+                    ))}
+                  </dd>
+                </Reveal>
+              ))}
+            </dl>
+          </div>
         </div>
         <SkillsTimeline />
       </Container>

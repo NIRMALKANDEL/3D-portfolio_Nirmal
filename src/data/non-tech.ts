@@ -18,7 +18,7 @@ export const nonTechExperience: NonTechEntry[] = [
     ],
   },
   {
-    title: "Valorant Event — IIT Indore",
+    title: "Valorant Event, IIT Indore",
     context: "Gaming / Operations",
     description: "Took part in running a 3-day Valorant esports event at IIT Indore, supporting on-ground event operations.",
     highlights: [
@@ -30,7 +30,7 @@ export const nonTechExperience: NonTechEntry[] = [
   },
   {
     title: "Samsung Galaxy Ultra Launch Event",
-    context: "Indore — 3 Stores",
+    context: "Indore, 3 Stores",
     description: "Volunteered at the Samsung Galaxy Ultra launch across three Samsung stores in Indore, supporting gaming activities and customer interaction.",
     highlights: [
       "Customer interaction",

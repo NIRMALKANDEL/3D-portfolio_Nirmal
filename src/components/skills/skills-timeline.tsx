@@ -4,14 +4,14 @@ import { skillsTimeline } from "@/data/timeline";
 import { useLanguage } from "@/context/language-context";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Badge } from "@/components/ui/badge";
+import { Reveal } from "@/components/ui/reveal";
 
 export function SkillsTimeline() {
   const { t } = useLanguage();
 
   return (
-    <div className="mt-16">
+    <div className="mt-24">
       <SectionHeading
-        eyebrow={t.skills.timelineEyebrow}
         title={t.skills.timelineTitle}
         subtitle={t.skills.timelineSubtitle}
       />
@@ -21,11 +21,9 @@ export function SkillsTimeline() {
           <li key={entry.period} className="relative">
             <span
               aria-hidden
-              className="absolute -left-[31px] top-6 h-3 w-3 rounded-full ring-4 ring-[var(--surface)] sm:-left-[39px]"
-              style={{
-                background: index % 2 === 0 ? "var(--accent)" : "var(--accent-2)",
-              }}
+              className="absolute -left-[31px] top-6 h-3 w-3 rounded-full bg-[var(--accent)] ring-4 ring-[var(--background)] sm:-left-[39px]"
             />
+            <Reveal delay={Math.min(index, 3) * 0.05}>
             <div className="flex flex-col gap-2 rounded-2xl border border-[var(--border)] bg-[var(--card)] card-elevated p-6">
               <div className="flex flex-wrap items-baseline justify-between gap-2">
                 <h3 className="text-base font-semibold text-[var(--foreground)]">
@@ -40,6 +38,7 @@ export function SkillsTimeline() {
                 ))}
               </div>
             </div>
+            </Reveal>
           </li>
         ))}
       </ol>
