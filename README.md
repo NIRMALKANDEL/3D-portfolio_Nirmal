@@ -1,47 +1,51 @@
-# Nirmal Kandel — Portfolio
+# Nirmal Kandel, 3D Portfolio
 
-Personal portfolio for **Nirmal Kandel**, Full Stack / MERN Stack Developer. Built with Next.js App Router, TypeScript and Tailwind CSS.
+Interactive 3D portfolio for **Nirmal Kandel**, Full Stack / MERN Developer. Built with Next.js, React Three Fiber, Motion and Tailwind CSS.
 
-**Live site:** [nirmal-portfolio-eta.vercel.app](https://nirmal-portfolio-eta.vercel.app)
+**Live site:** [nirmal-3d-portfolio.vercel.app](https://nirmal-3d-portfolio.vercel.app)
+
+## Highlights
+
+- **AI-coding 3D hero.** A neural-network core streams data packets into three floating code editors that type real code live (a Claude API call, the DevTinder login route, a React hook). Follows the cursor and fades on scroll.
+- **3D project carousel.** Drag, swipe, use the arrow keys or click a card. The front project shows its live demo, frontend/backend repos and a case study link.
+- **Case study pages** (`/projects/[slug]`). Browser mockup that flattens from 3D as you scroll, sticky table of contents, animated feature cards, a build timeline with scroll progress, and previous/next navigation.
+- **Draggable 3D skills globe** alongside grouped skill lists.
+- **Journey timeline.** Pins on desktop and pans sideways as you scroll, with coverflow-style 3D cards.
+- **Cursor light.** A soft glow follows the pointer (mouse only, off for reduced motion).
+- **Command palette** (`Ctrl/Cmd + K`) to jump to any page or project, copy the email or switch theme.
+- Dark mode by default and a bright mint light mode. Every animation respects `prefers-reduced-motion`.
 
 ## Tech Stack
 
-- **Framework:** Next.js 16 (App Router, Server + Client Components, `next/image`, `next/og`)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS v4
-- **Animation:** subtle CSS transitions + Framer Motion available
-- **Icons:** lucide-react + custom inline brand icons (GitHub/LinkedIn/WhatsApp)
-- **Email:** Resend (contact form, server-side only)
-
-## Features
-
-- Dark mode by default with a deliberately designed light mode (not an inversion)
-- English / Hindi language switch backed by centralized translation files
-- Tech / Beyond Code mode switch (`/` vs `/non-tech`) — non-tech experience never competes visually with the core developer identity
-- Curated, data-driven project content (`src/data/projects.ts`) verified against the real GitHub repositories — no invented features, metrics or URLs
-- Dynamic project case-study pages (`/projects/[slug]`)
-- Skills section with a skills timeline (`src/data/timeline.ts`) built from GitHub repo dates and work history
-- Server-side contact form (`/api/contact`) with validation, loading/success/error states
-- SEO: metadata per route, sitemap, robots.txt, generated favicon + OG image
-- Mobile-first responsive layout, accessible navigation, `prefers-reduced-motion` respected
+| Area | Tools |
+| --- | --- |
+| Framework | Next.js 16 (App Router), React 19, TypeScript |
+| 3D | Three.js, React Three Fiber, drei, canvas-texture editors |
+| Motion | Motion (`motion/react`): springs, scroll-linked transforms, layout animation |
+| Styling | Tailwind CSS v4, Geist and Geist Mono |
+| Email | Resend (server-side contact form) |
+| Hosting | Vercel |
 
 ## Project Structure
 
 ```
 src/
-  app/                # routes (App Router)
-    about/ projects/ projects/[slug]/ experience/ education/ non-tech/ contact/
-    api/contact/route.ts
-    layout.tsx  page.tsx  sitemap.ts  robots.ts  icon.tsx  opengraph-image.tsx
-  components/         # UI, organized by feature (navbar, hero, projects, ...)
-  context/            # theme + language context (useSyncExternalStore based)
-  data/               # content: site.ts, projects.ts, experience.ts, education.ts,
-                       # skills.ts, non-tech.ts, about.ts, translations/{en,hi}.ts
-  lib/                # utils
+  app/            # routes: /, /about, /projects, /projects/[slug], /experience,
+                  # /education, /non-tech, /contact, /api/contact
+  components/
+    hero/         # hero + AI-coding 3D scene (hero-scene.tsx)
+    projects/     # 3D carousel, cards, case study page
+    skills/       # skills section + draggable skill globe
+    journey/      # scroll-pinned horizontal timeline
+    command/      # Ctrl/Cmd+K command palette
+    ui/           # buttons, reveal, tilt card, cursor glow, scroll progress
+  data/           # content: projects, skills, experience, education, timeline
 public/
-  projects/           # project preview images (SVG placeholders — swap for real screenshots)
-  resume.pdf          # downloadable resume
+  projects/       # project preview images
+  resume.pdf
 ```
+
+Project content lives in `src/data/projects.ts` and is checked against each project's GitHub README.
 
 ## Local Setup
 
@@ -50,41 +54,18 @@ npm install
 npm run dev
 ```
 
-Visit http://localhost:3000.
+Open http://localhost:3000.
 
 ## Environment Variables
 
-Copy `.env.example` to `.env.local` and fill in:
+Copy `.env.example` to `.env.local`:
 
 | Variable | Purpose |
 | --- | --- |
-| `RESEND_API_KEY` | API key from [resend.com](https://resend.com) (free tier) used to send contact form emails. Without it, the form returns a friendly "not configured yet" error instead of failing silently. |
-| `CONTACT_TO_EMAIL` | Inbox that receives contact form messages. Defaults to the email in `src/data/site.ts`. |
-| `CONTACT_FROM_EMAIL` | Sender address — must be a verified domain/sender in Resend. |
+| `RESEND_API_KEY` | [Resend](https://resend.com) API key for the contact form. Without it the form shows a "not configured" error. |
+| `CONTACT_TO_EMAIL` | Inbox that receives messages. Defaults to the email in `src/data/site.ts`. |
+| `CONTACT_FROM_EMAIL` | Sender address; must be a verified Resend sender or domain. |
 
-## Resume
+## Deployment
 
-The resume lives at `public/resume.pdf`. The "Download Resume" buttons in the Hero and Contact areas link to `/resume.pdf`.
-
-## Available Routes
-
-| Route | Description |
-| --- | --- |
-| `/` | Home — hero, skills, featured projects, experience/education preview, Beyond Code teaser, contact CTA |
-| `/about` | Full bio |
-| `/projects` | All projects |
-| `/projects/[slug]` | Case study (`netflix-gpt`, `devtinder`, `nibblr`, `brightway-solar`, `nextjs-video-app`, `mern-todo`) |
-| `/experience` | Full work history |
-| `/education` | Full education history |
-| `/non-tech` | Beyond Code — events, operations & community experience |
-| `/contact` | Contact form + direct links |
-
-## Deployment (Vercel)
-
-Deployed on Vercel at **https://nirmal-portfolio-eta.vercel.app**. The Vercel project is connected to this GitHub repo, so every push to `master` triggers a new production deployment.
-
-To set up your own copy:
-
-1. Import the repo in [Vercel](https://vercel.com/new).
-2. Add the environment variables from `.env.example` in the Vercel project settings.
-3. Deploy — no additional build configuration required.
+Deployed on Vercel at **https://nirmal-3d-portfolio.vercel.app**. To deploy your own copy, import the repo at [vercel.com/new](https://vercel.com/new), add the environment variables above and deploy. No extra build configuration is needed.
