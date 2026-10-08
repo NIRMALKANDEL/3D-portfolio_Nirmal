@@ -3,51 +3,48 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #fbfbfa;
-  --surface: #f4f3f0;
+  --background: #f5fbf8;
+  --surface: #e8f6ef;
   --card: #ffffff;
-  --foreground: #111111;
-  --muted: #64635f;
-  --border: #eaeaea;
-  --accent: #c2410c;
-  --accent-2: #0f766e;
+  --foreground: #0b1711;
+  --muted: #4a5d53;
+  --border: #d3e6db;
+  --accent: #047857;
+  --accent-2: #0891b2;
+  --accent-bright: #10b981;
   --accent-foreground: #ffffff;
-  --ring: #c2410c;
-  --glass: rgb(251 251 250 / 0.86);
-  --glass-border: rgb(0 0 0 / 0.07);
-  --shadow-card: 0 1px 2px rgba(17, 17, 17, 0.03);
-  --shadow-card-hover: 0 1px 2px rgba(17, 17, 17, 0.03), 0 8px 24px -12px rgba(17, 17, 17, 0.08);
+  --ring: #059669;
+  --glass: rgb(245 251 248 / 0.84);
+  --glass-border: rgb(4 120 87 / 0.12);
+  --shadow-card: 0 1px 2px rgba(6, 60, 40, 0.04), 0 10px 30px -18px rgba(6, 90, 60, 0.18);
+  --shadow-card-hover: 0 1px 2px rgba(6, 60, 40, 0.05), 0 22px 44px -20px rgba(6, 120, 80, 0.3);
   --grain-opacity: 0.025;
   --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
-  --body-bg-image: radial-gradient(
-    45% 35% at 85% 0%,
-    color-mix(in srgb, var(--accent) 5%, transparent),
-    transparent 70%
-  );
+  --body-bg-image: radial-gradient(40% 35% at 8% 0%, rgb(16 185 129 / 0.18), transparent 70%),
+    radial-gradient(35% 30% at 95% 12%, rgb(8 145 178 / 0.14), transparent 70%),
+    radial-gradient(45% 40% at 60% 100%, rgb(163 230 53 / 0.1), transparent 70%);
 }
 
 .dark {
   color-scheme: dark;
-  --background: #0c0d0b;
-  --surface: #121310;
-  --card: #161713;
-  --foreground: #f2f2ee;
-  --muted: #a3a59b;
-  --border: #26271f;
-  --accent: #e08a63;
-  --accent-2: #4fb8ab;
-  --accent-foreground: #12130f;
-  --ring: #e08a63;
-  --glass: rgb(16 17 14 / 0.86);
-  --glass-border: rgb(255 255 255 / 0.08);
+  --background: #090c0b;
+  --surface: #0f1412;
+  --card: #121816;
+  --foreground: #ebf3ee;
+  --muted: #95a69c;
+  --border: #1f2924;
+  --accent: #3ecf8e;
+  --accent-2: #22d3ee;
+  --accent-bright: #4ade80;
+  --accent-foreground: #05140d;
+  --ring: #3ecf8e;
+  --glass: rgb(12 16 14 / 0.84);
+  --glass-border: rgb(255 255 255 / 0.07);
   --shadow-card: inset 0 1px 0 rgb(255 255 255 / 0.04);
-  --shadow-card-hover: inset 0 1px 0 rgb(255 255 255 / 0.06), 0 30px 60px -30px rgba(224, 138, 99, 0.25);
-  --grain-opacity: 0.06;
-  --body-bg-image: radial-gradient(
-    50% 40% at 85% -5%,
-    color-mix(in srgb, var(--accent) 9%, transparent),
-    transparent 70%
-  );
+  --shadow-card-hover: inset 0 1px 0 rgb(255 255 255 / 0.06), 0 30px 60px -30px rgba(62, 207, 142, 0.3);
+  --grain-opacity: 0.05;
+  --body-bg-image: radial-gradient(45% 35% at 85% -5%, rgb(62 207 142 / 0.09), transparent 70%),
+    radial-gradient(35% 30% at 0% 40%, rgb(34 211 238 / 0.05), transparent 70%);
 }
 
 @theme inline {
@@ -59,6 +56,7 @@
   --color-border: var(--border);
   --color-accent: var(--accent);
   --color-accent-2: var(--accent-2);
+  --color-accent-bright: var(--accent-bright);
   --color-accent-foreground: var(--accent-foreground);
   --color-ring: var(--ring);
   --font-sans: var(--font-geist);

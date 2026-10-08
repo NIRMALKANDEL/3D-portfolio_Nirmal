@@ -11,9 +11,9 @@ export function EducationPreview() {
   if (!primary) return null;
 
   return (
-      <div className="flex h-full flex-col justify-between gap-10 rounded-2xl border border-[var(--border)] bg-[var(--card)] card-elevated p-7 sm:p-9">
-        <div className="flex flex-col gap-6">
-          <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[color-mix(in_srgb,var(--accent)_15%,transparent)] text-[var(--accent)]">
+      <div className="flex h-full flex-col justify-between gap-5 rounded-2xl border border-[var(--border)] bg-[var(--card)] card-elevated p-6 sm:p-7">
+        <div className="flex flex-col gap-4">
+          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[color-mix(in_srgb,var(--accent)_15%,transparent)] text-[var(--accent)]">
             <GraduationCap size={22} />
           </span>
           <div className="flex flex-col gap-2">

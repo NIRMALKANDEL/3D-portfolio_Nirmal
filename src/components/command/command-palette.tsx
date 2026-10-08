@@ -65,7 +65,7 @@ export function CommandPalette() {
     return [
       { id: "home", group: "Pages", label: t.nav.home, icon: ArrowRight, run: go("/") },
       { id: "about", group: "Pages", label: t.nav.about, icon: ArrowRight, run: go("/about") },
-      { id: "lab", group: "Pages", label: "3D Lab", icon: ArrowRight, run: go("/#lab") },
+      { id: "journey", group: "Pages", label: "Journey", icon: ArrowRight, run: go("/#journey") },
       { id: "projects", group: "Pages", label: t.nav.projects, icon: ArrowRight, run: go("/projects") },
       { id: "experience", group: "Pages", label: t.nav.experience, icon: ArrowRight, run: go("/experience") },
       { id: "education", group: "Pages", label: t.nav.education, icon: ArrowRight, run: go("/education") },

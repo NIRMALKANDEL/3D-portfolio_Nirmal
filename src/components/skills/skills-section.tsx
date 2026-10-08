@@ -7,7 +7,6 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Badge } from "@/components/ui/badge";
 import { Reveal } from "@/components/ui/reveal";
 import { SkillSphere } from "@/components/skills/skill-sphere";
-import { SkillsTimeline } from "@/components/skills/skills-timeline";
 
 const allSkills = skillGroups.flatMap((group) => group.items);
 
@@ -15,8 +14,8 @@ export function SkillsSection() {
   const { t } = useLanguage();
 
   return (
-    <section id="skills" className="py-20 sm:py-28">
-      <Container>
+    <section id="skills" className="flex min-h-[100dvh] items-center py-20">
+      <Container className="max-w-7xl">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
           <Reveal className="order-2 lg:order-1">
             <SkillSphere skills={allSkills} />
@@ -45,7 +44,6 @@ export function SkillsSection() {
             </dl>
           </div>
         </div>
-        <SkillsTimeline />
       </Container>
     </section>
   );

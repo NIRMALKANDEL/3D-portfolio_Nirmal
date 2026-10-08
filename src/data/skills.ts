@@ -38,7 +38,7 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     key: "database",
-    items: ["MongoDB", "Mongoose", "Firebase", "ImageKit", "Vercel"],
+    items: ["MongoDB", "Mongoose", "Firebase", "ImageKit", "Vercel", "AWS EC2", "AWS SES", "nginx", "Cloudflare"],
   },
   {
     key: "tools",

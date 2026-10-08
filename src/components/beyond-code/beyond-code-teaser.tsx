@@ -8,7 +8,7 @@ export function BeyondCodeTeaser() {
   const { t } = useLanguage();
 
   return (
-      <div className="relative flex h-full flex-col justify-between gap-10 overflow-hidden rounded-2xl bg-[var(--accent)] p-7 text-[var(--accent-foreground)] sm:p-9">
+      <div className="relative flex h-full flex-col justify-between gap-5 overflow-hidden rounded-2xl bg-[var(--accent)] p-7 text-[var(--accent-foreground)] sm:p-9">
         <Gamepad2
           aria-hidden
           size={220}
@@ -16,7 +16,7 @@ export function BeyondCodeTeaser() {
           className="pointer-events-none absolute -bottom-10 -right-10 rotate-[-14deg] opacity-15"
         />
         <div className="relative flex flex-col gap-3">
-          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">{t.beyondCode.title}</h2>
+          <h2 className="text-2xl font-semibold tracking-tight">{t.beyondCode.title}</h2>
           <p className="text-lg font-medium">{t.beyondCode.subtitle}</p>
           <p className="max-w-[44ch] text-sm leading-relaxed opacity-85">{t.beyondCode.description}</p>
         </div>

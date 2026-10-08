@@ -108,6 +108,9 @@ export function ProjectCard({
                 Code
               </a>
             )}
+            <Link href={href} className={cn(linkChip, "border-[color-mix(in_srgb,var(--accent)_40%,var(--border))] text-[var(--accent)]")}>
+              {t.projects.caseStudy}
+            </Link>
             <span
               aria-hidden
               className="ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-[var(--surface)] text-[var(--foreground)] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--accent)]"

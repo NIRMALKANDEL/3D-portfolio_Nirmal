@@ -1,37 +1,28 @@
 "use client";
 
-import { getFeaturedProjects } from "@/data/projects";
+import { projects } from "@/data/projects";
 import { useLanguage } from "@/context/language-context";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { LinkButton } from "@/components/ui/button";
-import { ProjectCard } from "@/components/projects/project-card";
 import { Reveal } from "@/components/ui/reveal";
+import { ProjectCarousel } from "@/components/projects/project-carousel";
 
 export function FeaturedProjects() {
   const { t } = useLanguage();
-  const featured = getFeaturedProjects();
 
   return (
-    <section id="projects" className="py-24 lg:py-32">
-      <Container>
-        <Reveal>
-          <SectionHeading eyebrow={t.projects.eyebrow} title={t.projects.title} subtitle={t.projects.subtitle} />
-        </Reveal>
-
-        <div className="mt-12 grid gap-5 lg:grid-cols-2">
-          {featured.map((project, i) => (
-            <Reveal key={project.slug} delay={(i % 2) * 0.08} className="h-full">
-              <ProjectCard project={project} layout="row" />
-            </Reveal>
-          ))}
-        </div>
-
-        <div className="mt-10">
-          <LinkButton href="/projects" variant="secondary" size="sm" arrow>
+    <section id="projects" className="flex min-h-[100dvh] items-center overflow-x-clip py-20">
+      <Container className="max-w-7xl">
+        <Reveal className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
+          <SectionHeading eyebrow={t.projects.eyebrow} title={t.projects.title} subtitle="Drag the ring, use the arrow keys, or click a card." />
+          <LinkButton href="/projects" variant="secondary" size="sm" arrow className="shrink-0">
             {t.projects.viewAll}
           </LinkButton>
-        </div>
+        </Reveal>
+        <Reveal delay={0.1} className="mt-10">
+          <ProjectCarousel projects={projects} />
+        </Reveal>
       </Container>
     </section>
   );

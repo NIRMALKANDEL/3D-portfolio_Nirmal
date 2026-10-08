@@ -14,7 +14,7 @@ export const en: Translations = {
   },
   hero: {
     eyebrow: "Full Stack / MERN Stack Developer",
-    tagline: "I build responsive, production-focused web apps with React, TypeScript and the MERN stack.",
+    tagline: "I build production web apps with React, Node.js and AI in the loop, from API to interface.",
     description:
       "Frontend-focused developer working across React, TypeScript and the MERN stack, from UI to REST APIs, MongoDB and AI integrations. Currently building with Claude Code.",
     viewProjects: "View Projects",

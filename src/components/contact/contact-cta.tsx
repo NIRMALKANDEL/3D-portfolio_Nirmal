@@ -28,8 +28,8 @@ export function ContactCta() {
   };
 
   return (
-    <section className="py-20 sm:py-28">
-      <Container>
+    <section id="contact" className="flex min-h-[80dvh] items-center py-20">
+      <Container className="max-w-7xl">
         <Reveal>
           <div className="relative overflow-hidden rounded-[2rem] border border-[var(--border)] bg-[var(--card)] card-elevated px-6 py-16 sm:px-12 sm:py-20">
             <div

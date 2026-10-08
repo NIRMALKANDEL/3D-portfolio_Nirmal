@@ -59,9 +59,9 @@ export function Hero() {
   const sceneOpacity = useTransform(scrollYProgress, [0, 0.9], [1, 0]);
 
   return (
-    <section ref={section} className="relative overflow-hidden pt-10 pb-12 sm:pt-14 lg:pb-20">
+    <section ref={section} className="relative overflow-hidden pt-8 pb-10 sm:pt-12">
       <Container className="max-w-7xl">
-        <div className="grid grid-cols-1 items-center gap-6 lg:min-h-[calc(100dvh-10rem)] lg:grid-cols-[1.05fr_1fr] lg:gap-4">
+        <div className="grid grid-cols-1 items-center gap-6 lg:min-h-[calc(100dvh-6.5rem)] lg:grid-cols-[0.9fr_1.1fr] lg:gap-0">
           <div className="relative z-10 flex flex-col gap-6 animate-fade-up">
             <span className="inline-flex w-fit items-center rounded-full border border-[var(--border)] px-3 py-1 font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-[var(--muted)]">
               {t.hero.eyebrow}
@@ -78,7 +78,7 @@ export function Hero() {
               {t.hero.tagline}
             </p>
 
-            <div className="flex flex-wrap items-center gap-3 pt-2">
+            <div className="flex flex-wrap items-center gap-2.5 pt-2">
               <LinkButton href="/projects" arrow>
                 {t.hero.viewProjects}
               </LinkButton>
@@ -86,7 +86,6 @@ export function Hero() {
                 <Download size={16} />
                 {t.hero.resume}
               </LinkButton>
-              <span className="mx-1 hidden h-6 w-px bg-[var(--border)] sm:block" aria-hidden />
               <a
                 href={site.github}
                 target="_blank"
@@ -110,7 +109,7 @@ export function Hero() {
 
           <motion.div
             style={reduce ? undefined : { y: sceneY, scale: sceneScale, opacity: sceneOpacity }}
-            className="relative -mx-5 h-[340px] sm:h-[420px] lg:mx-0 lg:h-[600px]"
+            className="relative -mx-5 h-[380px] sm:h-[460px] lg:mx-0 lg:h-[640px]"
           >
             <div
               aria-hidden
