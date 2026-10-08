@@ -10,7 +10,7 @@ export const site = {
   githubRepos: "https://github.com/NIRMALKANDEL?tab=repositories",
   linkedin: "https://www.linkedin.com/in/nirmal-kandel",
   resumeUrl: "/resume.pdf",
-  siteUrl: "https://nirmalkandel.dev",
+  siteUrl: "https://nirmal-3d-portfolio.vercel.app",
   tagline:
     "Building responsive, production-focused web applications with React, TypeScript and the MERN stack.",
 } as const;
