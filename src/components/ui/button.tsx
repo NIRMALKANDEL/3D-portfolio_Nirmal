@@ -17,8 +17,8 @@ const base =
 const variants: Record<NonNullable<BaseProps["variant"]>, string> = {
   primary: "bg-[var(--accent)] text-[var(--accent-foreground)] hover:opacity-90",
   secondary:
-    "border border-[var(--border)] text-[var(--foreground)] hover:border-[var(--accent)] hover:text-[var(--accent)]",
-  ghost: "text-[var(--foreground)] hover:text-[var(--accent)]",
+    "border border-[var(--border)] text-[var(--foreground)] hover:border-[var(--accent)] hover:text-[var(--accent-ink)]",
+  ghost: "text-[var(--foreground)] hover:text-[var(--accent-ink)]",
   // For use on accent-filled surfaces.
   inverse: "bg-[var(--accent-foreground)] text-[var(--accent)] hover:opacity-90",
 };

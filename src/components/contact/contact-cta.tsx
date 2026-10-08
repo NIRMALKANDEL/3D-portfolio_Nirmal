@@ -53,7 +53,7 @@ export function ContactCta() {
                 <button
                   type="button"
                   onClick={copyEmail}
-                  className="group inline-flex h-11 items-center gap-2 rounded-full border border-[var(--border)] px-5 text-sm font-medium text-[var(--foreground)] transition-[border-color,color,transform] duration-300 hover:border-[var(--accent)] hover:text-[var(--accent)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+                  className="group inline-flex h-11 items-center gap-2 rounded-full border border-[var(--border)] px-5 text-sm font-medium text-[var(--foreground)] transition-[border-color,color,transform] duration-300 hover:border-[var(--accent)] hover:text-[var(--accent-ink)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
                 >
                   {copied ? <Check size={16} /> : <Copy size={16} />}
                   <span aria-live="polite">{copied ? "Copied to clipboard" : site.email}</span>

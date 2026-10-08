@@ -1,18 +1,19 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "motion/react";
 import { skillsTimeline } from "@/data/timeline";
 import { useLanguage } from "@/context/language-context";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
+import { TiltCard } from "@/components/ui/tilt-card";
 
 function Entry({ entry, index }: { entry: (typeof skillsTimeline)[number]; index: number }) {
   return (
-    <article className="relative flex h-full flex-col gap-3 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 card-elevated">
+    <article className="relative flex h-full flex-col gap-3 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 card-elevated hoverable">
       <div className="flex items-center justify-between gap-3">
-        <span className="font-mono text-xs text-[var(--accent)]">{entry.period}</span>
+        <span className="font-mono text-xs text-[var(--accent-ink)]">{entry.period}</span>
         <span className="font-mono text-xs text-[var(--muted)]">{String(index + 1).padStart(2, "0")}</span>
       </div>
       <h3 className="text-xl font-semibold text-[var(--foreground)]">{entry.title}</h3>
@@ -25,6 +26,39 @@ function Entry({ entry, index }: { entry: (typeof skillsTimeline)[number]; index
         ))}
       </div>
     </article>
+  );
+}
+
+/** As the track pans, each card swings in 3D: angled on the way in, flat at centre, angled on the way out. */
+function CoverflowCard({
+  entry,
+  index,
+  total,
+  progress,
+}: {
+  entry: (typeof skillsTimeline)[number];
+  index: number;
+  total: number;
+  progress: MotionValue<number>;
+}) {
+  const centre = index / (total - 1);
+  // Keyframe offsets must stay inside 0..1, so the first and last cards drop the out-of-range end.
+  const points = [
+    { at: centre - 0.35, rotate: -22, scale: 0.9, opacity: 0.55 },
+    { at: centre, rotate: 0, scale: 1, opacity: 1 },
+    { at: centre + 0.35, rotate: 22, scale: 0.9, opacity: 0.55 },
+  ].filter((p) => p.at >= 0 && p.at <= 1);
+  const range = points.map((p) => p.at);
+  const rotateY = useTransform(progress, range, points.map((p) => p.rotate));
+  const scale = useTransform(progress, range, points.map((p) => p.scale));
+  const opacity = useTransform(progress, range, points.map((p) => p.opacity));
+
+  return (
+    <motion.li style={{ rotateY, scale, opacity, transformPerspective: 1200 }} className="w-[360px] shrink-0">
+      <TiltCard max={5}>
+        <Entry entry={entry} index={index} />
+      </TiltCard>
+    </motion.li>
   );
 }
 
@@ -52,9 +86,7 @@ export function Journey() {
           <Container className="max-w-7xl">{heading}</Container>
           <motion.ol style={{ x }} className="mt-12 flex gap-6 pl-[max(2rem,calc((100vw-80rem)/2+2rem))] pr-[20vw]">
             {skillsTimeline.map((entry, i) => (
-              <li key={entry.period} className="w-[360px] shrink-0">
-                <Entry entry={entry} index={i} />
-              </li>
+              <CoverflowCard key={entry.period} entry={entry} index={i} total={skillsTimeline.length} progress={scrollYProgress} />
             ))}
           </motion.ol>
           <Container className="mt-10 max-w-7xl">
@@ -73,7 +105,9 @@ export function Journey() {
             {skillsTimeline.map((entry, i) => (
               <li key={entry.period}>
                 <Reveal delay={(i % 2) * 0.05} className="h-full">
-                  <Entry entry={entry} index={i} />
+                  <TiltCard max={4}>
+                    <Entry entry={entry} index={i} />
+                  </TiltCard>
                 </Reveal>
               </li>
             ))}

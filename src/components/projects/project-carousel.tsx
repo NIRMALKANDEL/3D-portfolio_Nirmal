@@ -153,7 +153,7 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
             type="button"
             onClick={() => shift(-1)}
             aria-label="Previous project"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent-ink)] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
           >
             <ArrowLeft size={16} />
           </button>
@@ -172,7 +172,7 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
             type="button"
             onClick={() => shift(1)}
             aria-label="Next project"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent-ink)] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
           >
             <ArrowRight size={16} />
           </button>
@@ -197,7 +197,7 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
               {project.technologies.slice(0, 6).map((tech) => (
                 <span
                   key={tech}
-                  className="rounded-md bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] px-2 py-1 font-mono text-[11px] text-[var(--accent)]"
+                  className="rounded-md bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] px-2 py-1 font-mono text-[11px] text-[var(--accent-ink)]"
                 >
                   {tech}
                 </span>
@@ -231,7 +231,7 @@ function ExtLink({ href, icon, label }: { href: string; icon: React.ReactNode; l
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex h-11 items-center gap-1.5 rounded-full border border-[var(--border)] px-4 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+      className="inline-flex h-11 items-center gap-1.5 rounded-full border border-[var(--border)] px-4 text-sm font-medium text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
     >
       {icon}
       {label}

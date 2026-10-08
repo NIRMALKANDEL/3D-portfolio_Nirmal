@@ -20,7 +20,7 @@ export function ExperienceTimeline() {
             key={`${item.company}-${item.role}`}
             className="flex flex-col gap-4 rounded-2xl border border-[var(--border)] bg-[var(--card)] card-elevated p-6 sm:flex-row"
           >
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--accent)_15%,transparent)] text-[var(--accent)]">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--accent)_15%,transparent)] text-[var(--accent-ink)]">
               <Briefcase size={18} />
             </span>
             <div className="flex flex-1 flex-col gap-2">
@@ -29,7 +29,7 @@ export function ExperienceTimeline() {
                 <span className="text-xs text-[var(--muted)]">{item.duration}</span>
               </div>
               <div className="flex flex-wrap items-center gap-2">
-                <p className="text-sm font-medium text-[var(--accent)]">{item.company}</p>
+                <p className="text-sm font-medium text-[var(--accent-ink)]">{item.company}</p>
                 {!item.isEngineering && <Badge>{t.experience.nonEngineering}</Badge>}
               </div>
               <ul className="mt-1 flex flex-col gap-1.5 text-sm text-[var(--muted)]">

@@ -12,7 +12,7 @@ export function NonTechContent() {
   return (
     <Container className="py-16 sm:py-20">
       <div className="flex flex-col gap-3">
-        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">
+        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent-ink)]">
           {t.beyondCode.eyebrow}
         </span>
         <h1 className="text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl">
@@ -28,7 +28,7 @@ export function NonTechContent() {
             key={entry.title}
             className="flex flex-col gap-3 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6"
           >
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--accent)_15%,transparent)] text-[var(--accent)]">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--accent)_15%,transparent)] text-[var(--accent-ink)]">
               <Gamepad2 size={18} />
             </span>
             <h2 className="text-base font-semibold text-[var(--foreground)]">

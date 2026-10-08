@@ -141,7 +141,7 @@ export function ProjectDetail({ project }: { project: Project }) {
                   "inline-flex h-11 items-center gap-2 rounded-full px-5 text-sm font-medium transition-[color,border-color,transform] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]",
                   l.primary
                     ? "bg-[var(--accent)] text-[var(--accent-foreground)]"
-                    : "border border-[var(--border)] text-[var(--foreground)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
+                    : "border border-[var(--border)] text-[var(--foreground)] hover:border-[var(--accent)] hover:text-[var(--accent-ink)]"
                 )}
               >
                 {l.icon}
@@ -210,7 +210,7 @@ export function ProjectDetail({ project }: { project: Project }) {
                       className="flex h-full gap-3 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 card-elevated"
                       style={{ transformPerspective: 800 }}
                     >
-                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--accent)_14%,transparent)] text-[var(--accent)]">
+                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--accent)_14%,transparent)] text-[var(--accent-ink)]">
                         <Check size={13} />
                       </span>
                       <p className="text-sm leading-relaxed text-[var(--foreground)]/90">{feature}</p>
@@ -267,7 +267,7 @@ export function ProjectDetail({ project }: { project: Project }) {
                 {label} project
                 {label === "Next" && icon}
               </span>
-              <span className="text-2xl font-semibold text-[var(--foreground)] transition-colors group-hover:text-[var(--accent)]">{p.title}</span>
+              <span className="text-2xl font-semibold text-[var(--foreground)] transition-colors group-hover:text-[var(--accent-ink)]">{p.title}</span>
               <span className="line-clamp-1 text-sm text-[var(--muted)]">{p.tagline}</span>
             </Link>
           ))}

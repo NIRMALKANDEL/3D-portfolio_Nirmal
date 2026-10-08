@@ -6,6 +6,7 @@ import { Navbar } from "@/components/navbar/navbar";
 import { Footer } from "@/components/footer/footer";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { CommandPalette } from "@/components/command/command-palette";
+import { CursorGlow } from "@/components/ui/cursor-glow";
 import "./globals.css";
 
 const geist = Geist({
@@ -92,6 +93,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </main>
           <Footer />
           <CommandPalette />
+          <CursorGlow />
         </Providers>
         <div aria-hidden className="grain" />
       </body>

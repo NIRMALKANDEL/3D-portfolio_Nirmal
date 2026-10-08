@@ -19,10 +19,10 @@ export function ProjectMeta({ project }: { project: Project }) {
 
   return (
     <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-medium">
-      <span className="font-mono uppercase tracking-[0.14em] text-[var(--accent)]">{project.category}</span>
+      <span className="font-mono uppercase tracking-[0.14em] text-[var(--accent-ink)]">{project.category}</span>
       <span className="text-[var(--muted)]">{statusLabel}</span>
       {project.builtWithClaude && (
-        <span className="inline-flex items-center gap-1 rounded-full bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] px-2.5 py-0.5 text-[var(--accent)]">
+        <span className="inline-flex items-center gap-1 rounded-full bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] px-2.5 py-0.5 text-[var(--accent-ink)]">
           <Sparkles size={12} />
           {t.projects.builtWithClaude}
         </span>
@@ -32,7 +32,7 @@ export function ProjectMeta({ project }: { project: Project }) {
 }
 
 const linkChip =
-  "relative z-10 inline-flex h-8 items-center gap-1.5 rounded-full border border-[var(--border)] px-3 text-xs font-medium text-[var(--foreground)] transition-colors duration-300 hover:border-[var(--accent)] hover:text-[var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]";
+  "relative z-10 inline-flex h-8 items-center gap-1.5 rounded-full border border-[var(--border)] px-3 text-xs font-medium text-[var(--foreground)] transition-colors duration-300 hover:border-[var(--accent)] hover:text-[var(--accent-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]";
 
 /** Compact card: image, title, short description, Live / Frontend / Backend links. */
 export function ProjectCard({
@@ -108,12 +108,12 @@ export function ProjectCard({
                 Code
               </a>
             )}
-            <Link href={href} className={cn(linkChip, "border-[color-mix(in_srgb,var(--accent)_40%,var(--border))] text-[var(--accent)]")}>
+            <Link href={href} className={cn(linkChip, "border-[color-mix(in_srgb,var(--accent)_40%,var(--border))] text-[var(--accent-ink)]")}>
               {t.projects.caseStudy}
             </Link>
             <span
               aria-hidden
-              className="ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-[var(--surface)] text-[var(--foreground)] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--accent)]"
+              className="ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-[var(--surface)] text-[var(--foreground)] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--accent-ink)]"
             >
               <ArrowUpRight size={14} />
             </span>

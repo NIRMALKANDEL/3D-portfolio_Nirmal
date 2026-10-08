@@ -254,7 +254,7 @@ export function CommandPalette() {
                       {cmd.hint && (
                         <span className="hidden truncate text-xs text-[var(--muted)] sm:inline">{cmd.hint}</span>
                       )}
-                      {i === active && <CornerDownLeft size={14} className="shrink-0 text-[var(--accent)]" />}
+                      {i === active && <CornerDownLeft size={14} className="shrink-0 text-[var(--accent-ink)]" />}
                     </button>
                   </li>
                 );

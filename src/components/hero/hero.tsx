@@ -45,7 +45,7 @@ function RevealWord({ word, delay, className }: { word: string; delay: number; c
 }
 
 const iconLink =
-  "inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border)] text-[var(--foreground)] transition-[color,border-color,transform] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-[var(--accent)] hover:text-[var(--accent)] active:scale-[0.96] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]";
+  "inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border)] text-[var(--foreground)] transition-[color,border-color,transform] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-[var(--accent)] hover:text-[var(--accent-ink)] active:scale-[0.96] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]";
 
 export function Hero() {
   const { t } = useLanguage();
@@ -71,7 +71,7 @@ export function Hero() {
               <span className="sr-only">{site.name}</span>
               <RevealWord word={firstName} delay={0.1} />
               <br />
-              <RevealWord word={lastName.join(" ")} delay={0.3} className="text-[var(--accent)]" />
+              <RevealWord word={lastName.join(" ")} delay={0.3} className="text-[var(--accent-display)]" />
             </h1>
 
             <p className="max-w-[34ch] text-lg leading-relaxed text-[var(--muted)] sm:text-xl">

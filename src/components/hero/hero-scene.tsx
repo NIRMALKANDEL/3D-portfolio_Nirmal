@@ -40,8 +40,8 @@ const palettes: Record<"dark" | "light", Palette> = {
     fn: "#22d3ee",
   },
   light: {
-    accent: "#059669",
-    accent2: "#0891b2",
+    accent: "#10b981",
+    accent2: "#06b6d4",
     edge: "#10b981",
     panelBg: "#ffffff",
     panelBar: "#ecf7f1",

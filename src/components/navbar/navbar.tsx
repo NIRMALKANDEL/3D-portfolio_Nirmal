@@ -140,7 +140,7 @@ export function Navbar() {
               style={{ transitionDelay: open ? `${80 + i * 50}ms` : "0ms" }}
               className={cn(
                 "py-2 text-3xl font-semibold tracking-tight transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
-                isActive(pathname, link.href) ? "text-[var(--accent)]" : "text-[var(--foreground)]",
+                isActive(pathname, link.href) ? "text-[var(--accent-ink)]" : "text-[var(--foreground)]",
                 open ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
               )}
             >

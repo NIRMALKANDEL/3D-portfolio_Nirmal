@@ -32,7 +32,7 @@ export function ExperiencePreview() {
                     <div className="flex flex-col gap-2.5">
                       <h3 className="text-xl font-semibold text-[var(--foreground)]">
                         {item.role}
-                        <span className="text-[var(--accent)]"> at {item.company}</span>
+                        <span className="text-[var(--accent-ink)]"> at {item.company}</span>
                       </h3>
                       <ul className="flex max-w-[60ch] flex-col gap-1 text-[15px] leading-relaxed text-[var(--muted)]">
                         {item.bulletList.slice(0, 2).map((bullet) => (

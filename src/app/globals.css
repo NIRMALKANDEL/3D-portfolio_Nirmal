@@ -3,26 +3,30 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #f5fbf8;
-  --surface: #e8f6ef;
+  --background: #f7fffb;
+  --surface: #e3f9ee;
   --card: #ffffff;
-  --foreground: #0b1711;
-  --muted: #4a5d53;
-  --border: #d3e6db;
-  --accent: #047857;
-  --accent-2: #0891b2;
-  --accent-bright: #10b981;
-  --accent-foreground: #ffffff;
+  --foreground: #06150e;
+  --muted: #3f5a4c;
+  --border: #c9ecd9;
+  --accent: #10b981;
+  --accent-ink: #047857;
+  --accent-display: #059669;
+  --accent-2: #06b6d4;
+  --accent-bright: #34d399;
+  --accent-foreground: #03241a;
   --ring: #059669;
-  --glass: rgb(245 251 248 / 0.84);
-  --glass-border: rgb(4 120 87 / 0.12);
-  --shadow-card: 0 1px 2px rgba(6, 60, 40, 0.04), 0 10px 30px -18px rgba(6, 90, 60, 0.18);
-  --shadow-card-hover: 0 1px 2px rgba(6, 60, 40, 0.05), 0 22px 44px -20px rgba(6, 120, 80, 0.3);
-  --grain-opacity: 0.025;
+  --glow: rgb(16 185 129 / 0.16);
+  --glass: rgb(247 255 251 / 0.84);
+  --glass-border: rgb(16 185 129 / 0.18);
+  --shadow-card: 0 1px 2px rgba(6, 60, 40, 0.04), 0 12px 32px -18px rgba(16, 185, 129, 0.28);
+  --shadow-card-hover: 0 1px 2px rgba(6, 60, 40, 0.05), 0 24px 48px -20px rgba(16, 185, 129, 0.4);
+  --grain-opacity: 0.02;
   --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
-  --body-bg-image: radial-gradient(40% 35% at 8% 0%, rgb(16 185 129 / 0.18), transparent 70%),
-    radial-gradient(35% 30% at 95% 12%, rgb(8 145 178 / 0.14), transparent 70%),
-    radial-gradient(45% 40% at 60% 100%, rgb(163 230 53 / 0.1), transparent 70%);
+  --body-bg-image: radial-gradient(42% 38% at 6% 0%, rgb(52 211 153 / 0.3), transparent 70%),
+    radial-gradient(36% 32% at 96% 10%, rgb(34 211 238 / 0.24), transparent 70%),
+    radial-gradient(40% 36% at 55% 100%, rgb(190 242 100 / 0.2), transparent 70%),
+    radial-gradient(30% 30% at 100% 70%, rgb(52 211 153 / 0.14), transparent 70%);
 }
 
 .dark {
@@ -34,6 +38,9 @@
   --muted: #95a69c;
   --border: #1f2924;
   --accent: #3ecf8e;
+  --accent-ink: #3ecf8e;
+  --accent-display: #3ecf8e;
+  --glow: rgb(62 207 142 / 0.13);
   --accent-2: #22d3ee;
   --accent-bright: #4ade80;
   --accent-foreground: #05140d;
@@ -57,6 +64,7 @@
   --color-accent: var(--accent);
   --color-accent-2: var(--accent-2);
   --color-accent-bright: var(--accent-bright);
+  --color-accent-ink: var(--accent-ink);
   --color-accent-foreground: var(--accent-foreground);
   --color-ring: var(--ring);
   --font-sans: var(--font-geist);
@@ -195,6 +203,26 @@ time {
 
 section[id] {
   scroll-margin-top: 112px;
+}
+
+/* Soft light that follows the cursor (see CursorGlow). */
+.cursor-glow {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 560px;
+  height: 560px;
+  margin: -280px 0 0 -280px;
+  border-radius: 9999px;
+  pointer-events: none;
+  background: radial-gradient(circle, var(--glow), transparent 65%);
+  mix-blend-mode: plus-lighter;
+}
+
+:root:not(.dark) .cursor-glow {
+  mix-blend-mode: multiply;
+  background: radial-gradient(circle, rgb(16 185 129 / 0.12), transparent 65%);
 }
 
 ::selection {

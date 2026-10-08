@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/container";
 export default function NotFound() {
   return (
     <Container className="flex min-h-[60vh] flex-col items-center justify-center gap-4 py-20 text-center">
-      <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">
+      <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--accent-ink)]">
         404
       </span>
       <h1 className="text-3xl font-semibold tracking-tight text-[var(--foreground)]">

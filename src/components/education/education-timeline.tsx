@@ -32,7 +32,7 @@ export function EducationTimeline() {
                 className={cn(
                   "flex h-11 w-11 shrink-0 items-center justify-center rounded-full",
                   isPrimary
-                    ? "bg-[color-mix(in_srgb,var(--accent)_18%,transparent)] text-[var(--accent)]"
+                    ? "bg-[color-mix(in_srgb,var(--accent)_18%,transparent)] text-[var(--accent-ink)]"
                     : "bg-[var(--card)] text-[var(--muted)]"
                 )}
               >
